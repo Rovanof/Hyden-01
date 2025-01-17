@@ -16,6 +16,9 @@
             text-align: center;
             padding: 20px;
         }
+        audio {
+            display: none;
+        }
         form {
             margin-top: 50px;
             background-color: #fff8dc;
@@ -51,45 +54,40 @@
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="song.mp3" type="audio/mp3">
+    </audio>
     <h1>Registro de Miembros</h1>
     <form id="registerForm">
         <div>
-            <label for="code"><img src="" alt="Código" width="50"> Código:</label>
-            <input type="text" id="code" placeholder="Ingrese el código">
-        </div>
-        <div>
-            <label for="name"><img src="" alt="Nombre" width="50"> Nombre:</label>
+            <label for="name">Nombre:</label>
             <input type="text" id="name" placeholder="Nombre">
         </div>
         <div>
-            <label for="surname"><img src="" alt="Apellido" width="50"> Apellido:</label>
+            <label for="surname">Apellido:</label>
             <input type="text" id="surname" placeholder="Apellido">
         </div>
         <button type="button" onclick="registerMember()">Registrar</button>
     </form>
     <script>
         function registerMember() {
-            const code = document.getElementById("code").value;
             const name = document.getElementById("name").value;
             const surname = document.getElementById("surname").value;
-            const universalCode = "MyLord";
 
-            if (code !== universalCode) {
-                alert("Código incorrecto. Intente nuevamente.");
-                return;
-            }
             if (!name || !surname) {
                 alert("Por favor, complete todos los campos.");
                 return;
             }
 
-            // Guarda los datos en el almacenamiento local
-            const members = JSON.parse(localStorage.getItem("members")) || [];
-            members.push({ name, surname });
-            localStorage.setItem("members", JSON.stringify(members));
+            // Recuperar soldados existentes
+            const soldiers = JSON.parse(localStorage.getItem("soldiers")) || [];
+
+            // Agregar el nuevo soldado
+            soldiers.push({ name, surname });
+            localStorage.setItem("soldiers", JSON.stringify(soldiers));
 
             alert(`Bienvenido al reino, ${name} ${surname}.`);
-            window.location.href = "tabla.html"; // Redirige a la tabla
+            window.location.href = "table.html"; // Redirige a la tabla
         }
     </script>
 </body>
