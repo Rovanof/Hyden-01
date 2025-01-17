@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro del Reino</title>
+    <style>
+        @font-face {
+            font-family: "Medieval";
+            src: url("https://fonts.gstatic.com/s/imfellgreatprimerdisplay/v17/ga6aaw1J5X9T9RW6j9bNfFdGHTZa5JQFuBNR.ttf");
+        }
+        body {
+            background-color: #f5f5dc;
+            color: #2b2b2b;
+            font-family: "Medieval", serif;
+            text-align: center;
+            padding: 20px;
+        }
+        audio {
+            display: none;
+        }
+        form {
+            margin-top: 50px;
+            background-color: #fff8dc;
+            padding: 20px;
+            border: 3px solid #8b4513;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #8b4513;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5a2e10;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="song.mp3" type="audio/mp3">
+    </audio>
+    <h1>Registro de Miembros</h1>
+    <form id="registerForm">
+        <div>
+            <label for="code"><img src="o.png" alt="Código" width="50"> Código:</label>
+            <input type="text" id="code" placeholder="Ingrese el código">
+        </div>
+        <div>
+            <label for="name"><img src="o1.png" alt="Nombre" width="50"> Nombre:</label>
+            <input type="text" id="name" placeholder="Nombre">
+        </div>
+        <div>
+            <label for="surname">Apellido:</label>
+            <input type="text" id="surname" placeholder="Apellido">
+        </div>
+        <button type="button" onclick="registerMember()">Registrar</button>
+    </form>
+    <script>
+        function registerMember() {
+            const code = document.getElementById("code").value;
+            const name = document.getElementById("name").value;
+            const surname = document.getElementById("surname").value;
+            const universalCode = "MyLord";
+
+            if (code !== universalCode) {
+                alert("Código incorrecto. Intente nuevamente.");
+                return;
+            }
+            if (!name || !surname) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+            alert(`Bienvenido al reino, ${name} ${surname}.`);
+            window.location.href = "table.html"; // Redirige a la tabla
+        }
+    </script>
+</body>
+</html>

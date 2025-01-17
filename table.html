@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miembros del Reino</title>
+    <style>
+        @font-face {
+            font-family: "Medieval";
+            src: url("https://fonts.gstatic.com/s/imfellgreatprimerdisplay/v17/ga6aaw1J5X9T9RW6j9bNfFdGHTZa5JQFuBNR.ttf");
+        }
+        body {
+            background-color: #f5f5dc;
+            color: #2b2b2b;
+            font-family: "Medieval", serif;
+            text-align: center;
+            padding: 20px;
+        }
+        audio {
+            display: none;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff8dc;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        th, td {
+            padding: 15px;
+            border: 2px solid #8b4513;
+            text-align: center;
+        }
+        th {
+            background-color: #d2b48c;
+            font-size: 1.5em;
+        }
+        td {
+            font-size: 1.2em;
+        }
+        img {
+            width: 70px;
+            height: auto;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="song.mp3" type="audio/mp3">
+    </audio>
+    <h1>Miembros del Reino</h1>
+    <table id="membersTable">
+        <tr>
+            <th>Rol</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+        </tr>
+        <tr>
+            <td>Rey</td>
+            <td>Pierre Chenaut</td>
+            <td><img src="King.jpg" alt="Rey"></td>
+        </tr>
+        <tr>
+            <td>Reina</td>
+            <td>Sin Reina</td>
+            <td><img src="Queen.jpg" alt="Reina"></td>
+        </tr>
+    </table>
+    <script>
+        // Función para agregar soldados
+        function addSoldier(name) {
+            const table = document.getElementById("membersTable");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>Soldado</td>
+                <td>${name}</td>
+                <td><img src="Soldiers.jpg" alt="Soldado"></td>
+            `;
+            table.appendChild(row);
+        }
+        // Simulación para agregar soldados iniciales
+        addSoldier("Juan");
+        addSoldier("Carlos");
+        addSoldier("Luis");
+        addSoldier("Pedro");
+    </script>
+</body>
+</html>
