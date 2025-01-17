@@ -58,36 +58,34 @@
         <tr>
             <th>Rol</th>
             <th>Nombre</th>
-            <th>Imagen</th>
         </tr>
         <tr>
             <td>Rey</td>
             <td>Pierre Chenaut</td>
-            <td><img src="King.png" alt="Rey"></td>
         </tr>
         <tr>
             <td>Reina</td>
             <td>Sin Reina</td>
-            <td><img src="Queen.png" alt="Reina"></td>
         </tr>
     </table>
     <script>
-        // Función para agregar soldados
-        function addSoldier(name) {
+        // Cargar soldados desde el almacenamiento local
+        function loadSoldiers() {
             const table = document.getElementById("membersTable");
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>Soldado</td>
-                <td>${name}</td>
-                <td><img src="Soldiers.jpg" alt="Soldado"></td>
-            `;
-            table.appendChild(row);
+            const soldiers = JSON.parse(localStorage.getItem("soldiers")) || [];
+
+            soldiers.forEach(soldier => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>Soldado</td>
+                    <td>${soldier.name} ${soldier.surname}</td>
+                `;
+                table.appendChild(row);
+            });
         }
-        // Simulación para agregar soldados iniciales
-        addSoldier("Juan");
-        addSoldier("Carlos");
-        addSoldier("Luis");
-        addSoldier("Pedro");
+
+        // Ejecutar la función al cargar la página
+        loadSoldiers();
     </script>
 </body>
 </html>
