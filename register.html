@@ -16,9 +16,6 @@
             text-align: center;
             padding: 20px;
         }
-        audio {
-            display: none;
-        }
         form {
             margin-top: 50px;
             background-color: #fff8dc;
@@ -54,9 +51,6 @@
     </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="song.mp3" type="audio/mp3">
-    </audio>
     <h1>Registro de Miembros</h1>
     <form id="registerForm">
         <div>
@@ -64,11 +58,11 @@
             <input type="text" id="code" placeholder="Ingrese el código">
         </div>
         <div>
-            <label for="name"><img src="o1.png" alt="Nombre" width="50"> Nombre:</label>
+            <label for="name"><img src="golden-helmet.png" alt="Nombre" width="50"> Nombre:</label>
             <input type="text" id="name" placeholder="Nombre">
         </div>
         <div>
-            <label for="surname">Apellido:</label>
+            <label for="surname"><img src="blue-helmet.png" alt="Apellido" width="50"> Apellido:</label>
             <input type="text" id="surname" placeholder="Apellido">
         </div>
         <button type="button" onclick="registerMember()">Registrar</button>
@@ -88,8 +82,14 @@
                 alert("Por favor, complete todos los campos.");
                 return;
             }
+
+            // Guarda los datos en el almacenamiento local
+            const members = JSON.parse(localStorage.getItem("members")) || [];
+            members.push({ name, surname });
+            localStorage.setItem("members", JSON.stringify(members));
+
             alert(`Bienvenido al reino, ${name} ${surname}.`);
-            window.location.href = "table.html"; // Redirige a la tabla
+            window.location.href = "tabla.html"; // Redirige a la tabla
         }
     </script>
 </body>
